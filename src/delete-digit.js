@@ -12,10 +12,18 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function deleteDigit(n) {
-  let num =''+n;
+	let num =(''+n).split('');
   for(let i=0;i<num.length;i++){
-    
+    if(i==num.length-1){
+			num.splice(i,1);
+		}
+    if(+num[i]<(+num[i+1])){
+			num.splice(i,1);
+			console.log(num)
+			break
+    }
   }
+	return +num.join('')
 }
 
 module.exports = {
