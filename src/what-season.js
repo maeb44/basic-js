@@ -11,28 +11,26 @@ const { NotImplementedError } = require('../lib');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  *
  */
- function getSeason(/*date*/) {
-//   
-//   if (date === undefined) {
-//     return 'Unable to determine the time of year!';
-//   }
+ function getSeason(date) {
+  if (date === undefined) {
+    return 'Unable to determine the time of year!';
+  }
   
 
-//   if (!(date instanceof Date)) {
-//     throw new Error('Invalid date!');
-//   }
+  if (!(date instanceof Date)) {
+    throw new Error('Invalid date!');
+  }
   
 
-//   if (isNaN(date.getTime())) {
-//     throw new Error('Invalid date!');
-//   }
+  if (isNaN(date.getTime())) {
+    throw new Error('Invalid date!');
+  }
   
-//   const month = date.getMonth();
-//   if (month < 2 || month === 11) return 'winter';
-//   if (month < 5) return 'spring';
-//   if (month < 8) return 'summer';
-//   return 'autumn';
-throw new NotImplementedError('Not implemented');
+  const month = date.getMonth();
+  if (month < 2 || month === 11) return 'winter';
+  if (month < 5) return 'spring';
+  if (month < 8) return 'summer';
+  return 'autumn';
 }
 
 module.exports = {
