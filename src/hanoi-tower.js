@@ -15,18 +15,16 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function calculateHanoi(diskNumber, turnsSpeed) {
-    // Количество минимальных ходов для решения Ханойских башень
-    const minTurns = Math.pow(2, diskNumber) - 1;
-    
-    // Время в секундах для выполнения всех ходов
-    const timeInSeconds = (minTurns / turnsSpeed) * 3600;
-    
-    return {
-        turns: minTurns,
-        seconds: Math.floor(timeInSeconds)
-    };
+  const minTurns = Math.pow(2, diskNumber) - 1;
+
+  const timeInSeconds = (minTurns / turnsSpeed) * 3600;
+
+  return {
+    turns: minTurns,
+    seconds: Math.floor(timeInSeconds),
+  };
 }
 
 module.exports = {
-  calculateHanoi
+  calculateHanoi,
 };

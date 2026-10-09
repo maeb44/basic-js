@@ -14,20 +14,19 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function createDreamTeam(members) {
+  if (Array.isArray(members)) {
+    return members
+      .filter((item) => typeof item === 'string')
+      .map((str) => {
+        return str.toUpperCase().trim()[0];
+      })
+      .sort()
+      .join('');
+  }
 
-if(Array.isArray(members)){
-return members.filter(item => typeof item === 'string')
-.map((str)=> {
-	return str.toUpperCase().trim()[0]
-})
-.sort()
-.join('')
-
-}
-
-return false
+  return false;
 }
 
 module.exports = {
-  createDreamTeam
+  createDreamTeam,
 };

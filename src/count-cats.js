@@ -15,9 +15,9 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function countCats(matrix) {
-  return matrix.flat().filter((word)=>word=='^^').length;
+  return matrix.flat().filter((word) => word == '^^').length;
 }
 
 module.exports = {
-  countCats
+  countCats,
 };

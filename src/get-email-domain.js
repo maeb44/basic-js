@@ -11,10 +11,10 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function getEmailDomain(email) {
-	email=email.split("@")
-  return email[email.length-1];
+  email = email.split('@');
+  return email[email.length - 1];
 }
 
 module.exports = {
-  getEmailDomain
+  getEmailDomain,
 };

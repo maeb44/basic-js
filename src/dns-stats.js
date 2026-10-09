@@ -23,26 +23,26 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function getDNSStats(domains) {
-    const stats = {};
-    
-    for (const domain of domains) {
-        const parts = domain.split('.').reverse();
-        let current = '';
-        
-        for (const part of parts) {
-            current = current ? `${current}.${part}` : `.${part}`;
-            
-            if (stats[current]) {
-                stats[current]++;
-            } else {
-                stats[current] = 1;
-            }
-        }
+  const stats = {};
+
+  for (const domain of domains) {
+    const parts = domain.split('.').reverse();
+    let current = '';
+
+    for (const part of parts) {
+      current = current ? `${current}.${part}` : `.${part}`;
+
+      if (stats[current]) {
+        stats[current]++;
+      } else {
+        stats[current] = 1;
+      }
     }
-    
-    return stats;
+  }
+
+  return stats;
 }
 
 module.exports = {
-  getDNSStats
+  getDNSStats,
 };
