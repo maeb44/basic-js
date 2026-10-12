@@ -20,19 +20,58 @@ const { NotImplementedError } = require('../lib');
  *
  */
 class VigenereCipheringMachine {
-  encrypt() {
-    // Remove line below and write your code here
-    throw new NotImplementedError('Not implemented');
+  constructor(reverse = false) {
+    this.reverse = reverse;
+  }
+  ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
+
+  getLetter(str, index) {
+    const n = str.length;
+    return str[((index % n) + n) % n].toLowerCase();
   }
 
-  decrypt() {
-    // Remove line below and write your code here
-    throw new NotImplementedError('Not implemented');
+  encrypt(str, key) {
+    if (typeof str != 'string' || typeof key != 'string') {
+      throw new Error('Incorrect arguments!');
+    }
+    let index = 0;
+    const res = [...str].map((el) => {
+      const posInAlphabet = this.ALPHABET.indexOf(el.toLowerCase());
+      if (posInAlphabet === -1) return el;
+      const posInKey = this.ALPHABET.indexOf(this.getLetter(key, index));
+      index += 1;
+
+      return this.getLetter(
+        this.ALPHABET,
+        posInAlphabet + posInKey,
+      ).toUpperCase();
+    });
+    if (this.reverse) return res.reverse().join('');
+    return res.join('');
+  }
+
+  decrypt(str, key) {
+    if (typeof str != 'string' || typeof key != 'string' || !str || !key) {
+      throw new Error('Incorrect arguments!');
+    }
+    let index = 0;
+    const res = [...str].map((el) => {
+      const posInAlphabet = this.ALPHABET.indexOf(el.toLowerCase());
+      if (posInAlphabet === -1) return el;
+      const posInKey = this.ALPHABET.indexOf(this.getLetter(key, index));
+      index += 1;
+      return this.getLetter(
+        this.ALPHABET,
+        posInAlphabet - posInKey,
+      ).toUpperCase();
+    });
+    if (this.reverse) return res.reverse().join('');
+    return res.join('');
   }
 }
 
 module.exports = {
   directMachine: new VigenereCipheringMachine(),
-  reverseMachine: new VigenereCipheringMachine(false),
+  reverseMachine: new VigenereCipheringMachine(true),
   VigenereCipheringMachine,
 };
